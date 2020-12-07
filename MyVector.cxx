@@ -62,7 +62,7 @@ void MyVector<T>::push_back(T item){
 }
 
 template<class T>
-void MyVector<T>::pop_back(int n){ //I am assuming it means to delete at n index
+void MyVector<T>::pop_back(int n){
   data[n] = 0;
   for (int i=n; i<s-1; i++){
     data[i] = data[i+1];
