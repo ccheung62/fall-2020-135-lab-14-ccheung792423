@@ -2,19 +2,21 @@
 #include <iostream>
 
 template<class T>
-MyVector<T>::MyVector(){
+MyVector<T>::MyVector(){  //default size of array is 10
   data = new T[10];
   cap = 10;
   s = 0;
 }
 
 template<class T>
-MyVector<T>::MyVector(int size){
+MyVector<T>::MyVector(int size){  //set the size as parameter except for when
+                                  //parameter is less than 0 which will then
+                                  //be set as 10  
   if (size < 0){
     size = 10;
     cap = 10;
   }
-  data = new T[s];
+  data = new T[size];
   cap = size;
   s = 0;
 }
@@ -22,21 +24,21 @@ MyVector<T>::MyVector(int size){
 template<class T>
 MyVector<T>::~MyVector(){
   delete[] data;
-  data = 0;
+  data = nullptr;
 }
 
 template<class T>
-int MyVector<T>::size(){
+int MyVector<T>::size(){  //return the number of elements in the array
   return s;
 }
 
 template<class T>
-int MyVector<T>::capacity(){
+int MyVector<T>::capacity(){ //return the size of the array 
   return cap;
 }
 
 template<class T>
-bool MyVector<T>::empty(){
+bool MyVector<T>::empty(){  //check if any element is initialized in the array
   if (s == 0){
     return true;
   }
@@ -46,7 +48,7 @@ bool MyVector<T>::empty(){
 }
 
 template<class T>
-void MyVector<T>::push_back(T item){
+void MyVector<T>::push_back(T item){ //add the item at the end of the array
   if (s >= cap){
     T* temp = data;
     data = new T[s+1];
@@ -62,24 +64,24 @@ void MyVector<T>::push_back(T item){
 }
 
 template<class T>
-void MyVector<T>::pop_back(int n){
-  data[n] = 0;
+void MyVector<T>::pop_back(int n){ //make the element at index n inaccesible
+  if (n >= s){
+    return;
+  }
   for (int i=n; i<s-1; i++){
     data[i] = data[i+1];
   }
-  data[s] = 0;
   s--;
   
 }
 
 template<class T>
-void MyVector<T>::pop_back(){
-  data[s-1] = 0;
+void MyVector<T>::pop_back(){  //make the last element inaccesible 
   s--;
 }
 
 template<class T>
-void MyVector<T>::clear(){
+void MyVector<T>::clear(){  //allocate a new array for data
   data = new T[10];
   cap = 10;
   s = 0;
