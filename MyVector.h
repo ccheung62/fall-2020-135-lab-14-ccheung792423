@@ -13,6 +13,7 @@ class MyVector{
   void pop_back(int n);
   void pop_back();
   void clear();
+  void printStat();
   T &operator[](int i){
     return data[i];
   };

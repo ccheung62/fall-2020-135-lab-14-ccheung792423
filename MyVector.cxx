@@ -87,6 +87,22 @@ void MyVector<T>::clear(){  //allocate a new array for data
   s = 0;
 }
 
+template<class T>
+void MyVector<T>::printStat(){
+  for (int i=0; i<s; i++){
+    std::cout << data[i] << "  ";
+  }
+  std::cout << std::endl;
+  if (s == 0){
+    std::cout << "The MyVector is empty" << std::endl;
+  }
+  else {
+  std::cout << "It currently contains " << s << " elements" << std::endl;
+  }
+  std::cout << "It's capacity is " << cap << " elements" << std::endl;
+  std::cout << "--------------------------------------------" << std::endl;
+}
+
 
 
 
